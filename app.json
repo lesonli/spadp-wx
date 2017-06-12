@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#5677fc",
+    "navigationBarTitleText": "点师成金",
+    "navigationBarTextStyle":"white"
+  }
+}
