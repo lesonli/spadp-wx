@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/around/around",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -8,5 +9,29 @@
     "navigationBarBackgroundColor": "#5677fc",
     "navigationBarTitleText": "点师成金",
     "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#353535",
+    "selectedColor": "#5677fc",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/resources/icon/home.png",
+        "selectedIconPath": "/resources/icon/home_on.png",        
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/around/around",
+        "iconPath": "/resources/icon/around.png",
+        "selectedIconPath": "/resources/icon/around_on.png",
+        "text": "附近"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "/resources/icon/my.png",
+        "selectedIconPath": "/resources/icon/my_on.png",
+        "text": "我"
+      }
+    ]
   }
 }
