@@ -1,0 +1,35 @@
+<!--shopdetail.wxml-->
+<scroll-view class="shop-detail-page" scroll-y scroll-top="{{scrollTop}}">
+  <image class="shop-img" mode="aspectFill" src="{{shopInfo.photos[0].url}}"></image>
+  <view class="shop-info">
+    <text class="name block">{{shopInfo.name}}</text>
+    <view class="star {{shopInfo.ratingclass}}"></view>
+    <text class="renjun margin-left-10">{{shopInfo.cost}}/人</text>
+    <view class="desc block">
+      <text class="district">{{shopInfo.district}}</text>
+      <text class="tags margin-left-10">{{shopInfo.tags}}</text>
+    </view>
+  </view>
+  <view class="shop-desc">
+    <text class="title">商户信息</text>
+    <view class="cell-group">
+      <view class="cell">
+        <image class="icon" mode="scaleToFill" src="/resources/icon/location_blue.png"></image>
+        <text class="text">{{shopInfo.address}}</text>
+        <image class="icon-right" mode="scaleToFill" src="/resources/icon/right.png"></image>
+      </view>
+      <view class="cell">
+        <image class="icon" mode="scaleToFill" src="/resources/icon/tel.png"></image>
+        <text class="text">{{shopInfo.tel}}</text>
+        <image class="icon-right" mode="scaleToFill" src="/resources/icon/right.png"></image>        
+      </view>
+      <view class="cell">
+        <image class="icon" mode="scaleToFill" src="/resources/icon/opentime.png"></image>
+        <text class="text">24小时</text>
+      </view>
+    </view>
+  </view>
+  <view class="shop-desc">
+    <text class="title">最新动态</text>
+  </view>
+</scroll-view>

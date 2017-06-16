@@ -4,6 +4,7 @@
   longitude="{{position.longitude}}"
   latitude="{{position.latitude}}"
   scale="16" 
+  include-points="true"
   controls="{{controls}}" 
   bindcontroltap="controltap" 
   markers="{{markers}}" 

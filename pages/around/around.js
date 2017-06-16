@@ -5,14 +5,7 @@ Page({
       latitude:23.099994,
       longitude:113.324520
     },
-    markers: [{
-      iconPath: "/resources/others.png",
-      id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 50,
-      height: 50
-    }],
+    markers: [],
     controls: [{
       id: 1,
       iconPath: '/resources/icon/location_center.png',
@@ -36,39 +29,44 @@ Page({
     }]
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     //初始化定位
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
-        console.log(res);
         that.setData({
           'position.latitude': res.latitude,
           'position.longitude': res.longitude
         })
         function onSuccess(res){
-          console.log(res);
           if (res.statusCode == 200){
             
             var markers =[];
             var list = res.data.pois;
-            console.log(list);
             for (var i = 0; i < list.length;i++){
               let longtitude = list[i].location.split(',')[0];
               let lartitude = list[i].location.split(',')[1];
-
+              let name = list[i].name;
               var marker = {
                 iconPath: "/resources/icon/map-marker.png",
                 id: i,
                 latitude: lartitude,
                 longitude: longtitude,
                 width: 25,
-                height: 25
+                height: 25,
+                title:name,
+                shopId: list[i].id,
+                callout:{
+                  content:name,
+                  color:"#5677fc",
+                  borderRadius:5,
+                  fontSize:14,
+                  padding:5,
+                  display:'ALWAYS'
+                }
               };
               markers.push(marker);
             }
-            console.log(markers);
             that.setData({
               'markers':markers
             })
@@ -93,20 +91,48 @@ Page({
   },
   markertap(e) {
     console.log(e.markerId)
+    wx.navigateTo({
+      url: '../shopDetail/shopdetail?shopid=' + this.data.markers[e.markerId].shopId
+    })
   },
   controltap(e) {
-    console.log(e.controlId)
+    var that = this
     if(e.controlId == 1){
-      wx.showToast({
-        title: '定位成功',
-        icon: 'success',
-        duration: 1000
+      wx.showLoading({
+        title: '定位中...',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 5000);
+      wx.getLocation({
+        type: 'wgs84',
+        success: function (res) {
+          that.setData({
+            'position.latitude': res.latitude,
+            'position.longitude': res.longitude
+          })
+          wx.hideLoading()
+          wx.showToast({
+            title: '定位成功',
+            icon: 'success',
+            duration: 800
+          })
+        }
       })
     }else if(e.controlId == 2){
-      wx.showToast({
-        title: '添加商户',
-        icon: 'success',
-        duration: 1000
+      /*wx.showModal({
+        title: '提示',
+        content: '这是一个模态弹窗',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })*/
+      wx.navigateTo({
+        url: '../addShop/addshop'
       })
     }
   }

@@ -1,14 +1,17 @@
 {
-  "pages":[
+  "pages": [
     "pages/around/around",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/addShop/addshop",
+    "pages/shopDetail/shopdetail"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#5677fc",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFF",
     "navigationBarTitleText": "点师成金",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#eeeeee"
   },
   "tabBar": {
     "color": "#353535",
@@ -17,7 +20,7 @@
       {
         "pagePath": "pages/index/index",
         "iconPath": "/resources/icon/home.png",
-        "selectedIconPath": "/resources/icon/home_on.png",        
+        "selectedIconPath": "/resources/icon/home_on.png",
         "text": "首页"
       },
       {
