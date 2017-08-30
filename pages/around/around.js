@@ -1,10 +1,13 @@
-var api = require('../../utils/api.js');
+var base = require('../../utils/base.js');
+var api_search = require('../../utils/api_search.js');
+var app = getApp();
 Page({
   data: {
-    position:{
-      latitude:23.099994,
-      longitude:113.324520
+    position: {
+      latitude: 23.099994,
+      longitude: 113.324520
     },
+    loading:false,
     markers: [],
     controls: [{
       id: 1,
@@ -30,51 +33,18 @@ Page({
   },
   onLoad: function () {
     var that = this
-    //初始化定位
-    wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        that.setData({
-          'position.latitude': res.latitude,
-          'position.longitude': res.longitude
-        })
-        function onSuccess(res){
-          if (res.statusCode == 200){
-            
-            var markers =[];
-            var list = res.data.pois;
-            for (var i = 0; i < list.length;i++){
-              let longtitude = list[i].location.split(',')[0];
-              let lartitude = list[i].location.split(',')[1];
-              let name = list[i].name;
-              var marker = {
-                iconPath: "/resources/icon/map-marker.png",
-                id: i,
-                latitude: lartitude,
-                longitude: longtitude,
-                width: 25,
-                height: 25,
-                title:name,
-                shopId: list[i].id,
-                callout:{
-                  content:name,
-                  color:"#5677fc",
-                  borderRadius:5,
-                  fontSize:14,
-                  padding:5,
-                  display:'ALWAYS'
-                }
-              };
-              markers.push(marker);
-            }
-            that.setData({
-              'markers':markers
-            })
-          }
-        }
-        api.getAround(res,onSuccess);
-      }
+    that.setData({
+      'loading': true
     })
+    app.getUserLocation(function(res){
+      that.setData({
+        'position.latitude': res.latitude,
+        'position.longitude': res.longitude
+      })
+      var params = {};
+      params.location = base.toLocation(res);
+      api_search.getAroundShop(params, that.onSuccess);
+    });
     //设置控件位置
     wx.getSystemInfo({
       success: function (res) {
@@ -86,54 +56,101 @@ Page({
       }
     })
   },
+  onSuccess(res) {
+    if (res.res_code == 1) {
+      var markers = [];
+      var list = res.msg;
+      for (var i = 0; i < list.length; i++) {
+        let longtitude = list[i].location.split(',')[0];
+        let latitude = list[i].location.split(',')[1];
+        let name = list[i].name;
+        var marker = {
+          iconPath: "/resources/icon/map-marker.png",
+          id: i,
+          latitude: latitude,
+          longitude: longtitude,
+          width: 30,
+          height: 30,
+          shop_id: list[i].shop_id,
+          sid: list[i].sid,
+          title: name,
+          callout: {
+            content: name,
+            color: "#5677fc",
+            borderRadius: 5,
+            fontSize: 14,
+            padding: 5,
+            display: 'ALWAYS'
+          }
+        };
+        markers.push(marker);
+      }
+      this.setData({
+        'markers': markers,
+        'loading':false
+      })
+    }
+  },
   regionchange(e) {
-    console.log(e.type)
   },
   markertap(e) {
-    console.log(e.markerId)
     wx.navigateTo({
-      url: '../shopDetail/shopdetail?shopid=' + this.data.markers[e.markerId].shopId
+      url: '../shopDetail/shopdetail?shop_id=' + this.data.markers[e.markerId].shop_id +
+      "&sid=" + this.data.markers[e.markerId].sid
     })
   },
   controltap(e) {
     var that = this
-    if(e.controlId == 1){
+    if (e.controlId == 1) {
+      if(that.data.loading){
+        return;
+      }
+      that.setData({
+        'loading': true
+      })
       wx.showLoading({
         title: '定位中...',
       })
       setTimeout(function () {
         wx.hideLoading()
       }, 5000);
-      wx.getLocation({
-        type: 'wgs84',
-        success: function (res) {
-          that.setData({
-            'position.latitude': res.latitude,
-            'position.longitude': res.longitude
-          })
-          wx.hideLoading()
-          wx.showToast({
-            title: '定位成功',
-            icon: 'success',
-            duration: 800
-          })
-        }
-      })
-    }else if(e.controlId == 2){
-      /*wx.showModal({
-        title: '提示',
-        content: '这是一个模态弹窗',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          } else if (res.cancel) {
-            console.log('用户点击取消')
-          }
-        }
-      })*/
+      app.getUserLocation(function (res) {
+        that.setData({
+          'position.latitude': res.latitude,
+          'position.longitude': res.longitude
+        })
+        wx.hideLoading()
+        wx.showToast({
+          title: '定位成功',
+          icon: 'success',
+          duration: 800
+        })
+        var params = {};
+        params.location = base.toLocation(res);
+        api_search.getAroundShop(params, that.onSuccess);
+      });
+    } else if (e.controlId == 2) {
       wx.navigateTo({
         url: '../addShop/addshop'
       })
+    } else if (e.controlId == 3) {
+      var display = "ALWAYS";
+      if (this.data.markers[0].callout.display == "ALWAYS") {
+        display = "BYCLICK";
+      }
+      var markers_new = this.data.markers;
+      for (var i = 0; i < this.data.markers.length; i++) {
+        markers_new[i].callout.display = display;
+      }
+      that.setData({
+        'markers': markers_new
+      })
     }
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })

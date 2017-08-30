@@ -1,0 +1,14 @@
+<template name="shop-list-item">
+  <view class="shop-item" data-id="{{shop_id}}" data-sid="{{sid}}" bindtap="goDetail">
+    <image wx:if="{{photo_url}}" class="shop-img" src="{{photo_url}}"></image>
+    <image wx:if="{{!photo_url}}" class="shop-img" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/default-img.png"></image>
+    <text class="shop-name block">{{name}}</text>
+    <view class="shop-info">
+      <view class="star star-{{rating}}"></view>
+      <text class="renjun">{{renjun}}</text>
+    </view>
+    <text class="shop-district">{{district}}</text>
+    <text class="shop-tags">{{tags}}</text>
+    <image class="shop-icon" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+  </view>
+</template>

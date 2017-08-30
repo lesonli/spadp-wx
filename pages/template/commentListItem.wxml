@@ -1,0 +1,22 @@
+<template name="comment-list-item">
+  <view class="comment-item" data-id="{{id}}" bindtap="goDetail">
+    <image wx:if="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}"></image>
+    <image wx:if="{{!avatarUrl}}" class="avatar-img" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/default-avatar.jpg"></image>
+    <view class="user-info">
+      <text class="user-name block">{{nickName}}</text>
+      <!--<text class="user-desc block">来自{{origin == 1? '网络':'spa雷达'}}</text>-->
+      <text class="rating">{{rating}}<text class="small">分</text></text>    
+    </view>
+    <view class="comment-info">
+      <text>{{content}}</text>
+    </view>
+    <view class="bottom-bar">
+      <text class="time">{{create_time}}</text>
+      <text class="origin">来自{{origin == 1? '网络':'spa雷达'}}</text>
+      <!--<view class="zan">
+        <image src="src"></image>
+        666
+      </view>-->
+    </view>
+  </view>
+</template>

@@ -1,2 +1,72 @@
 <!--addshop.wxml-->
-<text>addshop.wxml</text>
+<view class="addshop-view">
+  <view class="pannel info">
+    <view class="cell">
+      <text class="title">名称</text>
+      <input placeholder="输入商户名称" value="{{shopInfo.name}}" bindinput="bindShopName" confirm-type="next" />
+    </view>
+    <view class="cell">
+      <text class="title">地址</text>
+      <input class="address" disabled value="{{shopInfo.address}}" placeholder="定位商户位置" bindinput="bindShopAddress" confirm-type="next" >
+        <icon wx:if="{{showClear}}" class="clear-icon" type="clear" size="20" bindtap="clearAddress" />
+      </input>
+      <view class="location">
+      <image bindtap="chooseLocation" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/location_select.png"></image>
+      </view>
+    </view>
+    <view class="cell">
+      <text class="title">类型</text>
+      <picker class="shoptype-picker" bindchange="changeShopType" value="{{shopInfo.shopType}}" range="{{shopTypeList}}">
+    <view class="picker">
+      {{shopTypeList[shopInfo.shopType]}}
+    </view>
+  </picker>
+      <image class="icon-right" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+    </view>
+    <view class="cell">
+      <text class="title">电话</text>
+      <input placeholder="输入商户电话" maxlength="20" value="{{shopInfo.tel}}" type="number" bindinput="bindShopTel" confirm-type="next" />
+    </view>
+    <view class="cell" hover-class="hover" bindtap="showPicker" >
+      <text class="title">营业时间</text>
+      <text class="info">{{shopInfo.openTime}}</text>
+      <image class="icon-right" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+    </view>
+  </view>
+  <view class="pannel photos">
+    <text class="title">添加照片</text>
+    <button size="small" class="image-case primary-color">示例图片</button>
+    <view class="photo-viewer">
+      <image wx:if="{{shopInfo.show_photo_url}}" class="photo" mode="aspectFill" src="{{shopInfo.show_photo_url}}"></image>
+      <button  wx:if="{{shopInfo.show_photo_url == ''}}" class="add-photo" bindtap="addPhoto">
+        <image src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/photo.png"></image>
+      </button>
+      <view  wx:if="{{shopInfo.show_photo_url}}" hover-class="hover" class="edit-photo primary-color">
+        <text bindtap="addPhoto">更换图片</text>
+      </view>
+    </view>
+    <text class="photo-info">请对准要新增的商户招牌拍照，上传真实照片提高新增成功率</text>
+  </view>
+  <button hover-class="hover" bindtap="submit" class="submit primary-bg">提交</button>
+  <picker bindchange="bindPickerChange" value="{{shopInfo.shopType}}" range="{{shopTypeList}}">
+    <view class="picker">
+      {{array[index]}}
+    </view>
+  </picker>
+  <view  hover-class="hover" wx:if="{{isShowPicker}}" class="time-picker-control">
+  <text hover-class="hover" class="primary-color" bindtap="confirmOpenTime">确认</text>
+  </view>
+  <picker-view wx:if="{{isShowPicker}}" class="time-picker" value="{{value}}" bindchange="changeOpenTime">
+    <picker-view-column>
+      <view class="time-picker-column" wx:for="{{time}}" wx:key="{{item}}">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view class="time-picker-column" >至</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view class="time-picker-column"  wx:for="{{time}}" wx:key="{{item}}">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+  <view wx:if="{{isShowPicker}}" bindtap="showPicker"  class="picker-view-bg">
+  </view>
+</view>

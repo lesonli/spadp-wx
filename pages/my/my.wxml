@@ -1,0 +1,39 @@
+<!--my.wxml-->
+<view class="my-view">
+  <view class="header">
+    <image class="user-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <view class="user-info">
+      <text class="user-name block">{{userInfo.nickName}}</text>
+      <text class="user-city">{{userInfo.province}}</text>
+      <text class="user-gender">{{userInfo.gender==1?"男":"女"}}</text>
+    </view>
+ </view>
+  <view class="cell-view">
+    <view class="cell" bindtap="goToPage" data-page="aboutUS" hover-class="hover">
+      <image class="icon-left" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/about1.png"></image>
+      <text class="text">关于</text>
+    <image class="icon-right" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+    </view>
+    <view class="cell" bindtap="goToPage" data-page="updateLog" hover-class="hover">
+      <image class="icon-left" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/gou.png"></image>
+      <text class="text">更新日志</text>
+      <text class="info">v1.0.1</text>
+    <image class="icon-right" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+    </view>
+    <!--<view class="cell" bindtap="goToPage" data-page="aboutUS" hover-class="hover">
+      <image class="icon-left" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/about.png"></image>
+      <text class="text">玩法说明</text>
+    <image class="icon-right" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+    </view>-->
+    <view class="cell" bindtap="goToPage" data-page="questions" hover-class="hover">
+      <image class="icon-left" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/question.png"></image>
+      <text class="text">相关问题</text>
+    <image class="icon-right" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+    </view>
+    <view class="cell" bindtap="goToPage" data-page="contactUS" hover-class="hover">
+      <image class="icon-left" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/contact_us.png"></image>
+      <text class="text">给我留言</text>
+    <image class="icon-right" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+/* aboutUS.wxss */
+.about-us-page{
+  padding: 20px;
+  height: 100vh;
+}
+.about-us-page .name{
+  text-align: center;
+  font-size:18px;
+  margin: 10px 0;
+}
+.about-us-page .version{
+  text-align: center;
+  font-size:12px;
+  color: #888;
+  margin: 10px 0;
+}
+.about-us-page .info{
+  font-size:14px;
+  color: #888;
+  margin: 20px;
+  line-height: 16px;
+}
+.about-us-page image{
+  height: 400rpx;
+  width: 400rpx;
+  margin: 0 auto;
+  display: block;
+}
+.ttt{
+  display: flex;
+  flex-wrap: wrap;
+}
+.aaa{
+  flex: 0 0 50%;
+}

@@ -1,0 +1,7 @@
+<!--aboutUS.wxml-->
+<view class="about-us-page">
+  <image src="{{appInfo.url}}"></image>
+  <view class="name">SPA雷达</view>
+  <view class="version">{{appInfo.version}}</view>
+  <text class="info">{{appInfo.content}}</text>
+</view>

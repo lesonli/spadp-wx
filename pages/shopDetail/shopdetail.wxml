@@ -1,10 +1,16 @@
 <!--shopdetail.wxml-->
-<scroll-view class="shop-detail-page" scroll-y scroll-top="{{scrollTop}}">
-  <image class="shop-img" mode="aspectFill" src="{{shopInfo.photos[0].url}}"></image>
+<import src="/pages/template/commentListItem.wxml" />
+<view class="shop-detail-page" >
+  <image wx:if="{{shopInfo.photo_url != ''}}" class="shop-img" mode="aspectFill" src="{{shopInfo.photo_url}}"></image>
+  <image wx:if="{{shopInfo.photo_url == ''}}" class="shop-img" mode="aspectFill" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/default-banner.png"></image>
+  <button  class="share_icon" open-type="share">
+    <image src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/share_white.png"></image>
+  </button>
+  
   <view class="shop-info">
     <text class="name block">{{shopInfo.name}}</text>
-    <view class="star {{shopInfo.ratingclass}}"></view>
-    <text class="renjun margin-left-10">{{shopInfo.cost}}/人</text>
+    <view class="star star-{{shopInfo.rating}}"></view>
+    <text class="renjun margin-left-10">{{shopInfo.cost}}</text>
     <view class="desc block">
       <text class="district">{{shopInfo.district}}</text>
       <text class="tags margin-left-10">{{shopInfo.tags}}</text>
@@ -13,23 +19,27 @@
   <view class="shop-desc">
     <text class="title">商户信息</text>
     <view class="cell-group">
-      <view class="cell">
-        <image class="icon" mode="scaleToFill" src="/resources/icon/location_blue.png"></image>
+      <view class="cell" data-location="{{shopInfo.location}}" hover-class="hover" bindtap="goLocation">
+        <image class="icon-left" mode="scaleToFill" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/location_blue.png"></image>
         <text class="text">{{shopInfo.address}}</text>
-        <image class="icon-right" mode="scaleToFill" src="/resources/icon/right.png"></image>
+        <image class="icon-right" mode="scaleToFill" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/right.png"></image>
       </view>
-      <view class="cell">
-        <image class="icon" mode="scaleToFill" src="/resources/icon/tel.png"></image>
-        <text class="text">{{shopInfo.tel}}</text>
-        <image class="icon-right" mode="scaleToFill" src="/resources/icon/right.png"></image>        
+      <view class="cell" hover-class="hover">
+        <image class="icon-left" mode="scaleToFill" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/tel.png"></image>
+        <text class="text">{{shopInfo.tel}}</text>      
       </view>
-      <view class="cell">
-        <image class="icon" mode="scaleToFill" src="/resources/icon/opentime.png"></image>
+      <view class="cell" hover-class="hover">
+        <image class="icon-left" mode="scaleToFill" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/opentime.png"></image>
         <text class="text">24小时</text>
       </view>
     </view>
   </view>
   <view class="shop-desc">
     <text class="title">最新动态</text>
+    <view class="comment-list">
+      <template  is="comment-list-item" wx:for="{{shopCommentList}}" wx:key="{{item.id}}" data="{{...item}}"></template>    
+    </view>
+    <text wx:if="{{shopCommentList.length == 0}}"  class="info">当前商户还没有动态</text>
   </view>
-</scroll-view>
+  <image bindtap="AddComment" class="add-comment" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/addComment.png"></image>
+</view>

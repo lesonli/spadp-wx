@@ -1,0 +1,51 @@
+/* addComment.wxss */
+@import "/utils/star.wxss";
+.add-comment-page{
+  background:#eee;
+  height:100vh;
+  padding:20px;
+}
+.add-comment-page .raing-score{
+  text-align: center;
+  font-size: 32px;
+  color: #fc673d;
+}
+.add-comment-page .raing-score text{
+  font-size: 14px;
+  margin-left: 5px;
+}
+.add-comment-page .rating-text{
+  text-align: center;
+  font-size: 16px;
+  color: #fc673d;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add-comment-page .rating-bar{
+  margin-left: 100rpx;
+}
+.add-comment-page .rating-bar .star-image{
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+}
+.add-comment-page .rating-bar .star-image .item{
+  width: 50rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+}
+.add-comment-page .comment{
+  width: 95%;
+  height: 180px;
+  background: #FFF;
+  border: 1px solid #ddd;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+.add-comment-page button{
+  background: #fc6747;
+  color: #FFF;
+}

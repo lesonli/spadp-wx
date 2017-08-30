@@ -1,0 +1,56 @@
+/* my.wxss */
+@import "/utils/base.wxss";
+.my-view{
+  height: 100%;
+  background: #eee;
+}
+.my-view .header{
+  height: 130rpx;
+  padding-top: 20px;
+  padding-left: 80px;
+  position: relative;
+  background: #FFF;
+}
+.my-view .header .user-avatar{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    position: absolute;
+    left: 40rpx;
+    top: 30rpx;
+}
+
+.my-view .header .icon-right{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: 30rpx;
+    top: 60rpx;
+}
+.my-view .header .user-name{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.my-view .header .user-city{
+    font-size: 14px;
+    color: #888;
+}
+.my-view .header .user-gender{
+    font-size: 14px;
+    margin-left: 10px;
+    color: #888;
+    
+}
+.my-view .cell-view{
+  border-top: 1rpx solid #ddd;
+  border-bottom: 1rpx solid #ddd;
+  padding-left: 20rpx;
+  background: #FFF;  
+}
+
+.my-view .cell-view .cell:last-child{
+  border-bottom: none;
+}
+.hover{
+  background: #eee;
+}

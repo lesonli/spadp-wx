@@ -1,0 +1,7 @@
+<!--questions.wxml-->
+<view class="questions-page">
+  <view wx:for="{{questions}}" wx:key="{{item.id}}" class="question">
+    <view class="title">{{index+1}} {{item.title}}</view>
+    <text class="content">{{item.content}}</text>
+  </view>
+</view>

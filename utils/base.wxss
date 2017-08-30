@@ -1,0 +1,88 @@
+.block{
+  display: block;
+}
+.primary-color{
+  color: #5677fc;
+}
+.primary-bg{
+  background: #5677fc;
+  color: #FFF;
+}
+.margin-left-10{
+  margin-left:10px;
+}
+.pannel{
+  background: #FFF;
+  min-height: 200rpx;
+}
+.pannel+.pannel{
+  margin-top: 10rpx;
+}
+.cell{
+  margin-left: 20rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  box-sizing: border-box;
+  position: relative;
+  font-size: 16px;
+}
+.cell-group .cell:first-child{
+  border-top:1rpx solid #ddd;
+}
+.cell-group .cell:last-child{
+  border-bottom:1rpx solid #ddd;
+}
+.cell .title{
+  height:88rpx;
+  line-height:88rpx;
+  position: absolute;
+}
+.cell .info{
+  text-align: right;
+  color: #888;
+  position: absolute;
+  height:88rpx;
+  line-height:88rpx;
+  right: 100rpx;
+  top: 0;
+}
+.cell .icon-right{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right:30rpx;
+    top:26rpx;
+}
+.cell .icon-left{
+    width: 18px;
+    height: 18px;
+    position:absolute;
+    top:26rpx;
+}
+.cell .text{
+  padding-left:50rpx;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+  display:block;
+  padding-right:40rpx;
+}
+.cell input{
+  height:88rpx;
+  line-height:88rpx;
+  padding-left:80rpx;
+  padding-right:80rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.cell input .clear-icon{
+  position: absolute;
+  top: 6px;
+  right: 10px;
+}
+.cell+.cell{
+  border-top: 1rpx solid #ddd;
+}
+.cell .padding-left-160{
+  padding-left: 160rpx;
+}

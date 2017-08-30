@@ -1,1 +1,4 @@
-{}
+{
+  "enablePullDownRefresh": "true",
+  "navigationBarTitleText": "商户详情"
+}

@@ -1,0 +1,46 @@
+/* updateLog.wxss */
+.update-log-page{
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.update-log-page .title{
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  padding-bottom: 5px;
+  font-size: 20px;
+}
+.update-log-page .log-list{
+  padding-top: 5px; 
+  padding-bottom: 5px;
+
+}
+.log-list + .log-list {
+  border-top: 1px solid #ddd;
+}
+.update-log-page .log-list .head{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.update-log-page .log-list .head .name{
+  font-size: 18px;
+  margin-left: 5px;
+}
+.update-log-page .log-list .head .time{
+  font-size: 12px;
+  color: #888;
+}
+.update-log-page .log-list .content{
+  font-size: 14px;
+  color: #888;
+  margin-left: 20px;
+}
+.update-log-page .log-list .content .info{
+ padding-bottom: 5px;
+}
+.goPage{
+  color: #5677fc;
+  text-align: right;
+  margin-bottom: 5px;
+}

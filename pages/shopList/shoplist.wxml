@@ -1,0 +1,57 @@
+<!--shoplist.wxml-->
+<import src="/pages/template/shopListItem.wxml" />
+<view class="shop-list-view">
+  <view class="search-bar">
+    <input class="search-input" confirm-type="搜索" bindinput="bindReplaceInput" bindconfirm="search" placeholder="搜索商户名称" value="{{searchParams.keyword}}">
+    <icon class="search-icon" type="search" size="20" />
+    <icon wx:if="{{showClearbtn}}" class="clear-icon" type="clear" size="22" bindtap="clear" />
+    </input>
+  </view>
+  <view wx:if="{{searchParams.keyword !='' || shoplist.length >0}}" class="filter-bar">
+    <view data-filter="1" bindtap="showFilter" class="menu" hover-class="hover">
+      <text class="{{showFilterPannel == 1?'on':''}}">{{searchParams.district}}</text>
+      <image src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/down_gray.png"></image>
+    </view>
+    <view data-filter="2" bindtap="showFilter" class="menu" hover-class="hover">
+      <text class="{{showFilterPannel == 2?'on':''}}">{{shopTypeList[searchParams.shoptype]}}</text>
+      <image src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/down_gray.png"></image>
+    </view>
+    <!--<view class="menu" hover-class="hover">
+      <text>排序</text>
+      <image src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/down_gray.png"></image>
+    </view>-->
+  </view>
+  <view wx:if="{{showFilterPannel != 0}}" class="filter-pannel">
+    <scroll-view wx:if="{{showFilterPannel == 1}}" class="location" scroll-y>
+      <view wx:for="{{districtList}}" data-adcode="{{item.adcode}}" data-district="{{item.name}}" bindtap="chooseDistrict" class="filter-pannel-list {{item.adcode == searchParams.adcode? 'on':''}}">{{item.name}}</view>
+    </scroll-view>
+    <scroll-view wx:if="{{showFilterPannel == 2}}" class="category" scroll-y>
+      <view wx:for="{{shopTypeList}}" data-id="{{index}}" bindtap="chooseShopType" class="filter-pannel-list {{index == searchParams.shoptype? 'on':''}}">{{item}}</view>
+    </scroll-view>
+    <view data-filter="0" bindtap="showFilter" wx:if="{{showFilterPannel != 0}}" class="mask">
+    </view>
+  </view>
+  <view wx:if="{{searchParams.keyword =='' && shoplist.length == 0}}" class="search-tags">
+    <view class="title">
+      <text>搜索历史</text>
+      <image bindtap="deleteSearchHistorys" src="https://spadp-images.oss-cn-beijing.aliyuncs.com/resources/icon/delete.png"></image>
+    </view>
+    <view class="tags">
+      <button wx:for="{{search_historys}}" hover-class="hover" data-keyword="{{item}}" bindtap="searchTag" wx:key="{{item}}" size="mini" plain="true">{{item}}</button>
+    </view>
+  </view>
+  <view wx:if="{{searchParams.keyword =='' && shoplist.length == 0}}"  class="search-tags">
+    <view class="title">
+      <text>热门搜索</text>
+    </view>
+    <view class="tags">
+      <button wx:for="{{hot_search_historys}}" hover-class="hover" data-keyword="{{item.keyword}}" bindtap="searchTag" wx:key="{{item.keyword}}" size="mini" plain="true">{{item.keyword}}</button>
+    </view>
+  </view>
+  <scroll-view wx:if="{{searchParams.keyword !='' || shoplist.length >0}}" class="shop-list" scroll-y enable-back-to-top="true" bindscrolltolower="loadmore">
+    <template is="shop-list-item" wx:for="{{shoplist}}" wx:key="{{item.id}}" data="{{...item}}" />
+    <view wx:if="{{loaded}}" class="loadfinish">没有更多了</view>
+    <view wx:if="{{loading}}" class="loadfinish">读取中...</view>
+    <view wx:if="{{searchParams.keyword !='' && !loading && shoplist.length == 0}}" class="loadfinish" style="margin-top:200rpx">没有搜索的到相关商户，请修改关键词后重新搜索</view>
+  </scroll-view>
+</view>

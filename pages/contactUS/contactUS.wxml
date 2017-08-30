@@ -1,0 +1,16 @@
+<!--contactUS.wxml-->
+<view class="contact-us-page">
+<text class="title">标题</text>
+<input 
+placeholder="请输入标题文字"
+maxlength="20"
+bindinput="changeTitle"
+value="{{title}}"  />
+<text class="title">描述</text>
+<textarea
+bindlinechange="lineChange"
+placeholder="请输入问题描述（10-200字）"
+maxlength="200"
+bindinput="changeContent"  />
+<button disabled="{{disableSubmit}}" bindtap="submit">提交</button>
+</view>

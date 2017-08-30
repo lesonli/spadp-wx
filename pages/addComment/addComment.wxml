@@ -1,0 +1,21 @@
+<!--addComment.wxml-->
+<view class="add-comment-page">
+  <view class="raing-score">
+  {{rating.score}}<text>分</text>
+  </view>
+  <view class="rating-text">{{ratingText[rating.index]}}</view>
+  <view class="rating-bar">
+    <block wx:for="{{rating.stars}}" wx:key="{{rating.stars}}">
+      <image class="star-image" src="{{rating.score > item ?(rating.score-item == 0.5?rating.halfSrc:rating.selectedSrc) : rating.normalSrc}}">
+        <view class="item" style="left:0rpx" data-key="{{item+0.5}}" bindtap="changeRating"></view>
+        <view class="item" style="left:50rpx" data-key="{{item+1}}" bindtap="changeRating"></view>
+      </image>
+    </block>
+  </view>
+  <textarea class="comment" maxlength="200"
+   bindlinechange="lineChange"
+   bindinput="textChange"
+   placeholder="快来和大家交流你的看法吧（10-200个字）"
+   name="textarea"/>
+   <button disabled="{{disableSubmit}}" bindtap="submit">提交</button>
+</view>

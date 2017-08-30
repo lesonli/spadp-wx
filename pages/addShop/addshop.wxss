@@ -1,1 +1,133 @@
 /* addshop.wxss */
+@import "/utils/base.wxss";
+.addshop-view{
+  background: #eee;
+  height: 100%;
+  padding-top: 10rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+.addshop-view .cell .shoptype-picker{
+    height:88rpx;
+    text-align:right;
+    line-height:88rpx;
+    padding-right:80rpx;
+    color:#888;
+}
+.addshop-view .photos{
+  padding: 20rpx;
+  position: relative;
+}
+.addshop-view .photos .title{
+  font-size: 16px;
+}
+.addshop-view .photos .photo{
+  margin-top:20rpx;
+  height:300rpx;
+  width:100%;
+}
+.addshop-view .photos .edit-photo{
+  text-align: right;
+  font-size: 14px;
+  text-decoration: underline;
+  margin-right:20rpx;
+  margin-top:10rpx;
+}
+.addshop-view .photos .image-case{
+  width: 120rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 20rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid #ddd;
+  font-size: 10px;
+  padding:0;
+  line-height:36rpx;
+}
+.addshop-view .photos .image-case::after{
+  border: none;
+}
+.addshop-view .photos .add-photo{
+    width: 120rpx;
+    height:120rpx;
+    margin-top:20rpx;
+    margin-left: 0;
+}
+.addshop-view .photos .photo-info{
+    color: #888;
+    font-size:14px;
+    margin-top:20rpx;
+    display:block;
+    line-height:18px;
+}
+.addshop-view .photos .add-photo image{
+    width: 70rpx;
+    height:70rpx;
+    display: block;
+    text-align: center;
+    margin-top: 25rpx;
+}
+.addshop-view .submit{
+  margin-top: 40rpx;
+  width: 90%;
+  color: #FFF;
+}
+.addshop-view .picker-view-bg{
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#000;
+  opacity:0.5;
+  z-index: 98;
+}
+.addshop-view .time-picker{
+  width: 100%; 
+  height: 200px;
+  background: #FFF;
+  position: absolute;
+  bottom: 0;
+  z-index: 99;
+}
+.addshop-view .time-picker-control{
+  position:absolute;
+  bottom:200px;
+  background:#EEE;
+  z-index:99;
+  height:36px;
+  line-height:36px;
+  width:100%;
+  text-align:right;
+  padding-right:20rpx;
+  font-size:16px;
+  box-sizing:border-box;
+}
+
+.addshop-view .time-picker-column{
+  line-height: 40px;
+  text-align:center;
+  font-size: 14px;
+
+}
+.cell .address{
+  margin-right:80rpx;
+}
+.cell .location{
+  height:60rpx;
+  border-left:1px solid #ddd;
+  position:absolute;
+  top:10rpx;
+  right:0;
+  width:90rpx;
+  padding-left:20rpx;
+  box-sizing:border-box;
+}
+.cell .location image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.hover{
+  opacity: 0.8;
+}

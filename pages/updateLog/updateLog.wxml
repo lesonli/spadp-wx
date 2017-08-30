@@ -1,0 +1,13 @@
+<!--updateLog.wxml-->
+<view class="update-log-page">
+  <view class="log-list" wx:for="{{logList}}" wx:key="{{item.id}}" >
+    <view class="head">
+      <text class="name">{{item.title}}</text>
+      <text class="time">{{item.create_time}}</text>
+    </view>
+    <view class="content">
+      <view class="info" wx:for="{{item.content}}" wx:key="{{item.content}}">{{item}}</view>
+      <view class="goPage" data-title="{{item.title}}" bindtap="goLiuYan">跳转留言</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+/* questions.wxss */
+.questions-page{
+  background: #eee;
+  height: 100vh;
+}
+.questions-page .question{
+  background: #FFF;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.question + .question{
+  margin-top:5px;
+}
+.question .title{
+  margin-bottom: 10px;
+}
+.question .content{
+  color: #888;
+  font-size: 14px;
+}

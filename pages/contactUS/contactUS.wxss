@@ -1,0 +1,34 @@
+/* contactUS.wxss */
+.contact-us-page{
+  background: #eee;
+  padding: 10px;
+  height: 100vh;
+}
+.contact-us-page .title{
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display:block;
+}
+.contact-us-page input{
+  background:#FFF;
+  border:1px solid #ddd;
+  height:40px;
+  font-size:16px;
+  padding:8px 10px;
+  box-sizing:border-box;
+}
+.contact-us-page textarea{
+  background:#FFF;
+  border:1px solid #ddd;
+  font-size:16px;
+  padding:10px;
+  width:100%;
+  box-sizing:border-box;
+}
+.contact-us-page button{
+  background: #5677fc;
+  color: #FFF;
+  margin-top: 20px;
+}

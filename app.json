@@ -1,15 +1,22 @@
 {
   "pages": [
     "pages/around/around",
-    "pages/index/index",
-    "pages/logs/logs",
+    "pages/index/index",    
+    "pages/my/my",
+    "pages/addComment/addComment",
     "pages/addShop/addshop",
-    "pages/shopDetail/shopdetail"
+    "pages/shopList/shoplist",
+
+    "pages/aboutUS/aboutUS",
+    "pages/shopDetail/shopdetail",
+    "pages/updateLog/updateLog",
+    "pages/contactUS/contactUS",
+    "pages/questions/questions"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#FFF",
-    "navigationBarTitleText": "点师成金",
+    "navigationBarTitleText": "SPA雷达",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#eeeeee"
   },
@@ -18,19 +25,19 @@
     "selectedColor": "#5677fc",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "/resources/icon/home.png",
-        "selectedIconPath": "/resources/icon/home_on.png",
-        "text": "首页"
-      },
-      {
         "pagePath": "pages/around/around",
         "iconPath": "/resources/icon/around.png",
         "selectedIconPath": "/resources/icon/around_on.png",
         "text": "附近"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/index/index",
+        "iconPath": "/resources/icon/recommend.png",
+        "selectedIconPath": "/resources/icon/recommend_on.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/my/my",
         "iconPath": "/resources/icon/my.png",
         "selectedIconPath": "/resources/icon/my_on.png",
         "text": "我"
